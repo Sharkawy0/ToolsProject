@@ -1,14 +1,15 @@
 // Login.js
 import React, { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
-const Login = () => {
+const Login = ({ onSignIn }) => {  // Add onSignIn as a prop
   const [formData, setFormData] = useState({
     email: "",
     password: ""
   });
+  const navigate = useNavigate(); 
   const [error, setError] = useState(null);
-  const [successMessage, setSuccessMessage] = useState(null);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -29,8 +30,9 @@ const Login = () => {
       });
 
       if (response.status === 200) {
-        setSuccessMessage("Login successful!");
         setError(null);
+        onSignIn && onSignIn();  // Call onSignIn to update the app state
+        navigate("/create-order");  // Navigate to create-order route
       }
     } catch (error) {
       setError(error.response?.data?.error || "Login failed. Please try again.");
@@ -41,7 +43,6 @@ const Login = () => {
     <div>
       <h2>User Login</h2>
       {error && <p style={{ color: "red" }}>{error}</p>}
-      {successMessage && <p style={{ color: "green" }}>{successMessage}</p>}
 
       <form onSubmit={handleSubmit}>
         <label>
@@ -54,6 +55,7 @@ const Login = () => {
             required
           />
         </label>
+        <br></br>
         <label>
           Password:
           <input
@@ -64,6 +66,7 @@ const Login = () => {
             required
           />
         </label>
+        <br></br>
         <button type="submit">Login</button>
       </form>
     </div>

@@ -70,6 +70,7 @@ const Registration = () => {
             required
           />
         </label>
+        <br></br>
         <label>
           Email:
           <input
@@ -80,6 +81,7 @@ const Registration = () => {
             required
           />
         </label>
+        <br></br>
         <label>
           Phone:
           <input
@@ -90,6 +92,7 @@ const Registration = () => {
             required
           />
         </label>
+        <br></br>
         <label>
           Password:
           <input
@@ -100,6 +103,7 @@ const Registration = () => {
             required
           />
         </label>
+        <br></br>
         <label>
           Confirm Password:
           <input
@@ -110,6 +114,7 @@ const Registration = () => {
             required
           />
         </label>
+        <br></br>
         <button type="submit">Register</button>
       </form>
     </div>
